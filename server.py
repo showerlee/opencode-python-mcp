@@ -4,7 +4,7 @@ import mcp.server.stdio
 import mcp.types as types
 
 # 1. 创建 Server 实例
-server = Server("my-custom-tools")
+server = Server("python-mcp-server")
 
 # 2. 注册工具列表 (使用 low-level 注册 API)
 async def handle_list_tools(
@@ -74,7 +74,7 @@ async def handle_call_tool(
 
 	elif name == "get_weather":
 		city = arguments.get("city", "北京")
-		weather = f"模拟天气：{city}，天气晴朗，25°C"
+		weather = f"模拟天气：{city} 天气晴朗 25°C"
 		content = [types.TextContent(type="text", text=weather)]
 		return types.CallToolResult(content=content)
 
@@ -105,7 +105,7 @@ async def main():
 			read_stream,
 			write_stream,
 			InitializationOptions(
-				server_name="my-custom-tools",
+				server_name="python-mcp-server",
 				server_version="0.1.0",
 				capabilities=server.get_capabilities(
 					notification_options=NotificationOptions(),
